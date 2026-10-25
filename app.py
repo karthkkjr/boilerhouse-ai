@@ -72,17 +72,23 @@ if prompt:
         if AGENT_READY:
             note = (f"\n\n(Sidebar weights: price={price_w}, distance={dist_w}, rating={review_w}"
                     + (f", budget=${budget}/bed" if budget else "") + ")")
+            conv = st.session_state.conversation
+            conv.append({"role": "user", "content": prompt + note})
             thinking_slot = st.expander("🧠 Thinking", expanded=False).empty()
             answer_slot = st.empty()
             thinking, answer = "", ""
             try:
-                for kind, text in stream_reply_sync(st.session_state.conversation, prompt + note):
-                    if kind in ("thinking", "reasoning"):
+                for kind, text in stream_reply_sync(conv):
+                    if kind == "thinking":
                         thinking += text
                         thinking_slot.markdown(thinking)
-                    elif kind in ("answer", "content", "text", "delta"):
+                    elif kind == "tool":
+                        st.caption("🔧 " + text)
+                    else:
                         answer += text
                         answer_slot.markdown(answer)
+                if not (conv and conv[-1].get("role") == "assistant"):
+                    conv.append({"role": "assistant", "content": answer})
             except Exception as e:
                 answer = f"⚠️ Agent error: {e}\n\n" + format_ranking(rank_with_sliders())
                 answer_slot.markdown(answer)
