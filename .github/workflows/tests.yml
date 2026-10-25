@@ -1,0 +1,21 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate agentskills.io spec
+        run: python tools/validate_skills.py
+      - name: Run decision-matrix tests
+        run: python -m unittest tests/test_decision_matrix.py -v
+      - name: Smoke-test ranking CLI
+        run: python skills/decision-matrix-calculator/scripts/rank_apartments.py --budget 900 --top 3

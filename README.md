@@ -1,5 +1,7 @@
 # BoilerHouse AI
 
+[![tests](https://github.com/karthkkjr/boilerhouse-ai/actions/workflows/tests.yml/badge.svg)](https://github.com/karthkkjr/boilerhouse-ai/actions/workflows/tests.yml)
+
 **A fully local, open-source AI housing assistant for Purdue students.** Ask in plain English ("cheapest place near the engineering buildings with a gym") and BoilerHouse AI ranks West Lafayette apartments, explains *why* each one ranked where it did, and never sends your data to a cloud API.
 
 Built at the Hello World Hacktoberfest Hack Day, West Lafayette, October 25, 2026.
