@@ -1,0 +1,61 @@
+**Person C: Frontend, Deployment & Demo Lead (Detailed Execution Plan)**
+
+Your mission is to make the backend logic built by A and B look polished, deploy it to satisfy the sponsor prize requirements, and guarantee the Devpost submission is flawless before the deadline. You are also the team's timekeeper.
+
+Here is your exact step-by-step checklist to complete before the 4:30 PM deadline:
+
+### 1. Secure the Open-Source Requirements (Immediate)
+
+If you did not do this during the setup phase, you must do it right now. The MLH judges will instantly disqualify you from the "Best Open-Source AI Project" track if this is missing.
+
+* Go to your `boilerhouse-ai` GitHub repository settings.
+* Ensure the repository visibility is set to **Public**.
+* Click "Add file" -> "Create new file", name it `LICENSE`, and choose the **MIT License** or **Apache-2.0** template. Commit this to the main branch.
+
+### 2. Build the Streamlit Interface (2:25 PM)
+
+You need to build a lightweight chat interface that allows the user to talk to Person A's Hermes agent, while visually displaying the decision matrix weights Person B is coding.
+
+* Create a file named `app.py` in the root of the repository.
+* Import Streamlit (`import streamlit as st`).
+* **The Sidebar:** Use `st.sidebar` to create sliders for the three apartment criteria. This gives the judges a visual element to interact with.
+```python
+with st.sidebar:
+    st.header("Housing Preferences")
+    st.slider("Price Importance", 0.0, 1.0, 0.5, key="price_weight")
+    st.slider("Distance Importance", 0.0, 1.0, 0.5, key="distance_weight")
+    st.slider("Review Importance", 0.0, 1.0, 0.5, key="review_weight")
+
+```
+
+
+* **The Chat Interface:** Use `st.chat_input("Tell me what you're looking for...")` to capture the user's prompt.
+* **The Integration:** When the user hits send, pass the chat input AND the slider weights to Person A's `main.py` script. Display the agent's response using `st.chat_message("assistant")`.
+
+### 3. Secure the DigitalOcean Sponsor Prize (3:15 PM)
+
+To qualify for the MLH DigitalOcean prize challenge, you must utilize their platform.
+
+* Look at the physical DigitalOcean card provided at the event.
+* Navigate to `mlh.link/digitalocean-hermes-h26` in your browser.
+* Follow the quick-deploy instructions to spin up a basic Hermes agent droplet using the hackathon starter kit credits.
+* Even if your final demo runs locally on your laptop, having this DigitalOcean deployment link active and included in your Devpost submission satisfies the sponsor requirement.
+
+### 4. Enforce the Code Freeze (3:45 PM)
+
+As the timekeeper, you must be ruthless.
+
+* At exactly 3:45 PM, tell Person A and Person B to stop adding new code.
+* Have everyone push their final changes to GitHub.
+* Pull the latest `main` branch onto your primary presentation laptop.
+* Run `streamlit run app.py` and run through the exact scenario you will use in the video.
+
+### 5. Record the Demo & Submit (4:00 PM)
+
+Devpost requires a video, and the site frequently crashes at 4:29 PM due to traffic. Do not wait.
+
+* **Record:** Use QuickTime, OBS, or Zoom to record your screen. Keep it under 3 minutes.
+* **The Script:** Say, "We built BoilerHouse AI to help Purdue freshmen find housing. It runs locally using Google's Gemma 4 and the Hermes framework, meaning user data never goes to the cloud."
+* **The Visual:** Show the Streamlit UI, type in a prompt ("I have a $900 budget and need to be near Beering Hall"), and show the AI returning the top 3 matches from Person B's decision matrix.
+* **Upload:** Upload the video to YouTube as **Unlisted** (not Private).
+* **Submit:** Paste the YouTube link, the GitHub repo link, and the DigitalOcean deployment link into the Devpost form and hit submit by **4:25 PM**.
