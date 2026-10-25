@@ -1,7 +1,7 @@
 ---
 name: decision-matrix-calculator
 description: Rank, score, compare, filter and recommend Purdue University off-campus student housing and apartments in West Lafayette, Indiana using a weighted multi-criteria decision matrix. Use whenever the user asks where to live, which apartment is best, cheapest rent, closest to campus, nearest Engineering Mall, best rated, budget housing, roommate bedroom count, lease options, amenities (gym, pool, furnished, pet-friendly, shuttle), CityBus access, or wants to compare Hub on Campus, Rise on Chauncey, Muinzer, Lodge on the Wabash, Fuse, Aspire, Allight Village, Lark, Blackbird Farms, Campus Edge, Chauncey Square, Cottages on Lindberg, Redpoint, Verve, Fairway. Keywords: apartment ranking, housing recommendation, rent per bed, price, distance, rating, weights, trade-off, normalization, scoring, BoilerHouse, Boilermaker, West Lafayette housing search.
-license: Apache-2.0
+license: MIT
 compatibility: Python 3.11+ standard library only. No network, no API keys. Runs fully offline.
 metadata:
   project: boilerhouse-ai
