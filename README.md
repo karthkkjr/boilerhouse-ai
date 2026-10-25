@@ -39,26 +39,28 @@ Streamlit UI (app.py)
 | [Agent Skills](https://agentskills.io) | Open standard for packaging agent capabilities |
 | [Streamlit](https://streamlit.io) | Chat UI |
 
-## Quick start
+## Quick start (any laptop)
+
+**Prerequisites:** Python 3.11+, Git, and (for the AI agent) [Ollama](https://ollama.com/download).
 
 ```bash
-# 1. Model
-ollama pull gemma4:e2b
-
-# 2. Python deps
-python -m venv venv && source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# 3. Sanity-check the skill (no model needed)
-python tools/validate_skills.py
-python -m unittest tests/test_decision_matrix.py
-python skills/decision-matrix-calculator/scripts/rank_apartments.py --budget 900 --top 3
-
-# 4. Run the app
+git clone https://github.com/karthkkjr/boilerhouse-ai
+cd boilerhouse-ai
+./setup.sh            # macOS / Linux / Git Bash
+# .\setup.ps1        # Windows PowerShell
 streamlit run app.py
 ```
 
-Hermes Agent runs from its own git checkout. See `hermes_main.py` for setup.
+The setup script creates a venv, installs dependencies, pulls `gemma4:e2b`, clones Hermes Agent into `vendor/`, and runs the test suite. Every optional step warns instead of failing.
+
+**What runs where:**
+
+| Your laptop has | You get |
+|---|---|
+| Python only | Ranking UI: sliders + budget drive the decision engine directly |
+| + Ollama with `gemma4:e2b` + Hermes | Full agent: natural-language chat, visible reasoning, tool calls |
+
+The sidebar shows which mode is active.
 
 ## How the ranking works
 

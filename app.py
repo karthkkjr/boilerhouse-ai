@@ -7,6 +7,11 @@ import streamlit as st
 
 RANK_SCRIPT = Path(__file__).parent / "skills" / "decision-matrix-calculator" / "scripts" / "rank_apartments.py"
 
+# Find a Hermes checkout without manual PYTHONPATH: ./vendor/hermes-agent (setup script) or ~/hermes-agent.
+for _hermes in (Path(__file__).parent / "vendor" / "hermes-agent", Path.home() / "hermes-agent"):
+    if _hermes.is_dir() and str(_hermes) not in sys.path:
+        sys.path.insert(0, str(_hermes))
+
 # Use Person A's Hermes brain if it's present; otherwise fall back to direct ranking.
 try:
     from hermes_main import new_conversation, stream_reply_sync
