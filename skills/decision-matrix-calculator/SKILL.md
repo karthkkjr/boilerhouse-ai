@@ -26,21 +26,21 @@ Score is 0-100. All data is local; never call external APIs for this task.
 
 Rank (all flags optional):
 ```bash
-python3 scripts/rank_apartments.py --budget 900 --max-distance 1.5 --min-rating 3.8 \
+python scripts/rank_apartments.py --budget 900 --max-distance 1.5 --min-rating 3.8 \
   --bedrooms 2 --amenities gym,furnished --weights price=0.5,distance=0.3,rating=0.2 --top 3
 ```
 
 Preferred for agents - pass everything as one JSON object:
 ```bash
-python3 scripts/rank_apartments.py --json '{"budget": 900, "max_distance": 1.5, "weights": {"price": 0.5, "distance": 0.3, "rating": 0.2}, "top": 3}'
+python scripts/rank_apartments.py --json '{"budget": 900, "max_distance": 1.5, "weights": {"price": 0.5, "distance": 0.3, "rating": 0.2}, "top": 3}'
 ```
 Valid JSON keys: budget, max_distance, min_rating, bedrooms, require_bus, amenities, weights, top.
 
 Lookup / compare:
 ```bash
-python3 scripts/lookup_apartments.py --list --sort price
-python3 scripts/lookup_apartments.py --name rise
-python3 scripts/lookup_apartments.py --compare hub,rise,muinzer
+python scripts/lookup_apartments.py --list --sort price
+python scripts/lookup_apartments.py --name rise
+python scripts/lookup_apartments.py --compare hub,rise,muinzer
 ```
 
 ## Mapping user intent to weights
